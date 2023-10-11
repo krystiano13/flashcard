@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+require_once 'Database.php';
 
 use App\Database;
 
@@ -12,24 +13,35 @@ class User
     private string $rep_password;
 
     public function login() {
-        if(!$this->username) return;
-        if(!$this->password) return;
+        $errors = [];
+        if(!$this->username) {
+            array_push($errors, 'No username provided');
+        };
+
+        if(!$this->password) {
+            array_push($errors, 'No password provided');
+        };
+
+        if($errors !== []) {
+            echo json_encode(['status' => false, 'errors' => $errors]);
+            return;
+        }
 
         $database = new Database();
         $database->connect();
 
         $query = $database->connection->
-            prepare('SELECT username FROM users WHERE username=":username" AND password=":password"');
+            prepare('SELECT username FROM users WHERE username=:username AND password=:password');
         $query->bindValue(':username', $this -> username);
         $query->bindValue(':password', $this -> password);
         $query->execute();
 
-        if($query -> rowCount <= 0) {
-            echo "Ni dziala";
+        if($query -> rowCount() <= 0) {
+            echo json_encode(['status' => false]);
         }
 
         else {
-            echo "dziala";
+            echo json_encode(['status' => true]);
         }
     }
 
