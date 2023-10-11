@@ -9,7 +9,7 @@ class Database
     private static string $password = "";
     private static string $dbName = "flashcard";
 
-    public $connection;
+    public object $connection;
 
     public function connect() {
         $this -> connection = new \PDO(
