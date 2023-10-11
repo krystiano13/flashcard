@@ -1,0 +1,10 @@
+body {
+    width : 100vw;
+    height : 100vh;
+}
+form button {
+    transition: background-color 250ms, color 250ms;
+}
+input::placeholder {
+    color : #752947;
+}
