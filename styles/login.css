@@ -1,0 +1,35 @@
+body {
+    width : 100vw;
+    height : 100vh;
+}
+
+#form {
+    animation : formAppear 400ms;
+}
+
+form button {
+    transition: background-color 250ms, color 250ms;
+}
+input::placeholder {
+    color : #752947;
+}
+
+@keyframes formAppear {
+    0% {
+        opacity : 0;
+        transform: translateX(-300px);
+    }
+
+    40% {
+        opacity : 1;
+        transform: translateX(0px);
+    }
+
+    70% {
+        transform: translateX(-30px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
