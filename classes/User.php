@@ -12,6 +12,10 @@ class User
     private string $password;
     private string $rep_password;
 
+    public function register() {
+
+    }
+
     public function login() {
         $errors = [];
         if(!$this->username) {
