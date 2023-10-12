@@ -11,23 +11,37 @@ class User
     private string $email;
     private string $password;
     private string $rep_password;
+    private array $errors;
 
     public function register() {
+        $this->errors = [];
 
+        if(!$this->username) array_push($this->errors, 'No username provided');
+        if(!$this->password) array_push($this->errors, 'No password provided');
+        if(!$this->email) array_push($this->errors, 'No email provided');
+        if(!$this->checkUsername()) array_push($this->errors, 'username must be unique');
+
+        if($this->errors !== []) {
+            echo json_encode(['status' => false, 'errors' => $this->errors]);
+            return;
+        }
+
+        $database = new Database();
+        $database->connect();
     }
 
     public function login() {
-        $errors = [];
+        $this -> errors = [];
         if(!$this->username) {
-            array_push($errors, 'No username provided');
+            array_push($this->errors, 'No username provided');
         };
 
         if(!$this->password) {
-            array_push($errors, 'No password provided');
+            array_push($this->errors, 'No password provided');
         };
 
-        if($errors !== []) {
-            echo json_encode(['status' => false, 'errors' => $errors]);
+        if($this->errors !== []) {
+            echo json_encode(['status' => false, 'errors' => $this->errors]);
             return;
         }
 
@@ -63,6 +77,18 @@ class User
 
     public function setRep_Password(string $input) {
         $this -> rep_password = $input;
+    }
+
+    private function checkUsername(): bool {
+        $database = new Database();
+        $database -> connect();
+
+        $query = $database->connection
+            ->prepare('SELECT username FROM users WHERE username=:username');
+        $query -> bindValue(':username', $this->username);
+
+        if($query -> rowCount() >= 1) return false;
+        else return true;
     }
 
 }
