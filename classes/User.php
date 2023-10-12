@@ -72,18 +72,23 @@ class User
         $database = new Database();
         $database->connect();
 
+
         $query = $database->connection->
-            prepare('SELECT username FROM users WHERE username=:username AND password=:password');
+            prepare('SELECT username, password FROM users WHERE username=:username');
         $query->bindValue(':username', $this -> username);
-        $query->bindValue(':password', $this -> password);
         $query->execute();
+
+        $result = $query -> fetchAll();
 
         if($query -> rowCount() <= 0) {
             echo json_encode(['status' => false]);
         }
 
         else {
-            echo json_encode(['status' => true]);
+            if(password_verify($this -> password, $result[0]['password']))
+                echo json_encode(['status' => true]);
+            else
+                echo json_encode(['status' => false]);
         }
     }
 
@@ -106,11 +111,6 @@ class User
     private function checkUserInfo(string $info, string $type): bool {
         $database = new Database();
         $database -> connect();
-
-        if($type === "email") {
-            if(!filter_var($type, FILTER_VALIDATE_EMAIL))
-                return false;
-        }
 
         $query = $database->connection
             ->prepare("SELECT {$type} FROM users WHERE {$type}=:info");
