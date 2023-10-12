@@ -23,6 +23,7 @@ class User
             array_push($this->errors, 'username must be unique');
         if(!$this->checkUserInfo($this->email, 'email'))
             array_push($this->errors, 'email must be unique');
+        if(!$this->checkPassword()) array_push($this->errors, 'password is too short');
 
         if($this->errors !== []) {
             echo json_encode(['status' => false, 'errors' => $this->errors]);
@@ -86,12 +87,21 @@ class User
         $database = new Database();
         $database -> connect();
 
+        if($type === "email") {
+            if(!filter_var($type, FILTER_VALIDATE_EMAIL))
+                return false;
+        }
+
         $query = $database->connection
             ->prepare("SELECT {$type} FROM users WHERE {$type}=:info");
         $query -> bindValue(':info', $info);
 
         if($query -> rowCount() >= 1) return false;
-        else return true;
+        return true;
     }
 
+    private function checkPassword(string $password):bool {
+        if(strlen($password) < 8) return false;
+        return true;
+    }
 }
