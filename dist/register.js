@@ -9,6 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const registerForm = document.querySelector('#form');
+const regErrorsDiv = document.querySelector('.errors');
+const injectRegErrors = (errors) => {
+    regErrorsDiv.innerHTML = "";
+    errors.forEach((item) => {
+        const paragraph = document.createElement('p');
+        paragraph.innerText = item;
+        paragraph.className = "f-xs font-head color-bg mt-1";
+        regErrorsDiv === null || regErrorsDiv === void 0 ? void 0 : regErrorsDiv.appendChild(paragraph);
+    });
+};
 const handleRegister = (e) => __awaiter(void 0, void 0, void 0, function* () {
     e.preventDefault();
     const formData = new FormData(registerForm);
@@ -16,11 +26,12 @@ const handleRegister = (e) => __awaiter(void 0, void 0, void 0, function* () {
         .then(res => res.json())
         .then(data => {
         if (!data.status) {
-            alert("Register error");
+            if (data.errors)
+                injectRegErrors(data.errors);
         }
         else {
             alert("Register went successfully");
         }
     });
 });
-form === null || form === void 0 ? void 0 : form.addEventListener('submit', (e) => handleRegister(e));
+registerForm === null || registerForm === void 0 ? void 0 : registerForm.addEventListener('submit', (e) => handleRegister(e));

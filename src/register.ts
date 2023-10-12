@@ -1,4 +1,16 @@
 const registerForm: HTMLFormElement | null = document.querySelector('#form');
+const regErrorsDiv: HTMLDivElement | null = document.querySelector('.errors');
+
+const injectRegErrors = (errors: string[]) => {
+    (regErrorsDiv as HTMLDivElement).innerHTML = "";
+
+    errors.forEach((item:string) => {
+        const paragraph:HTMLParagraphElement = document.createElement('p');
+        paragraph.innerText = item;
+        paragraph.className = "f-xs font-head color-bg mt-1";
+        regErrorsDiv?.appendChild(paragraph);
+    });
+}
 
 const handleRegister = async (e:SubmitEvent): Promise<void> => {
     e.preventDefault();
@@ -7,7 +19,8 @@ const handleRegister = async (e:SubmitEvent): Promise<void> => {
         .then(res => res.json())
         .then(data => {
             if(!data.status) {
-                alert("Register error");
+                if(data.errors)
+                    injectRegErrors(data.errors);
             }
             else {
                 alert("Register went successfully");
@@ -15,4 +28,4 @@ const handleRegister = async (e:SubmitEvent): Promise<void> => {
         })
 }
 
-form?.addEventListener('submit', (e) => handleRegister(e));
+registerForm?.addEventListener('submit', (e:SubmitEvent) => handleRegister(e));

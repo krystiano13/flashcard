@@ -32,6 +32,7 @@
         </button>
         <a class="m-1 font-other color-secondary decoration-none color-hover color-bg-hover" href="index.php">Have an
             account ?</a>
+        <div class="errors"></div>
     </form>
 </main>
 </body>
