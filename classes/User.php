@@ -23,7 +23,11 @@ class User
             array_push($this->errors, 'username must be unique');
         if(!$this->checkUserInfo($this->email, 'email'))
             array_push($this->errors, 'email must be unique');
-        if(!$this->checkPassword()) array_push($this->errors, 'password is too short');
+        if(!$this->checkPassword($this->password))
+            array_push($this->errors, 'password is too short');
+        if($this->password !== $this->rep_password) {
+            array_push($this->errors, 'passwords are different');
+        }
 
         if($this->errors !== []) {
             echo json_encode(['status' => false, 'errors' => $this->errors]);
@@ -32,6 +36,22 @@ class User
 
         $database = new Database();
         $database->connect();
+
+        $hash = password_hash($this->password, PASSWORD_DEFAULT);
+
+        $query = $database->connection->prepare(
+            "INSERT INTO users VALUES(NULL,:username,:email,:password)"
+        );
+        $query->bindValue(':username', $this->username);
+        $query->bindValue(':email', $this->email);
+        $query->bindValue(':password', $hash);
+
+        if($query -> execute()) {
+            echo json_encode(['status' => true]);
+        }
+        else {
+            echo json_encode(['status' => false]);
+        }
     }
 
     public function login() {
@@ -95,6 +115,7 @@ class User
         $query = $database->connection
             ->prepare("SELECT {$type} FROM users WHERE {$type}=:info");
         $query -> bindValue(':info', $info);
+        $query -> execute();
 
         if($query -> rowCount() >= 1) return false;
         return true;
