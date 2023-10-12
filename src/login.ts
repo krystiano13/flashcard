@@ -1,6 +1,18 @@
 const form:HTMLFormElement | null = document.querySelector('form');
 const usernameInput: HTMLInputElement | null = document.querySelector('#usernameInput');
 const passwordInput: HTMLInputElement | null = document.querySelector('#passwordInput');
+const errorsDiv: HTMLDivElement | null = document.querySelector('.errors');
+
+const injectErrors = (errors: string[]) => {
+    (errorsDiv as HTMLDivElement).innerHTML = "";
+
+    errors.forEach((item:string) => {
+        const paragraph:HTMLParagraphElement = document.createElement('p');
+        paragraph.innerText = item;
+        paragraph.className = "f-xs font-head color-bg mt-1";
+        errorsDiv?.appendChild(paragraph);
+    });
+}
 
 const handleSubmit = async (e:SubmitEvent): Promise<void> => {
     e.preventDefault();
@@ -14,7 +26,7 @@ const handleSubmit = async (e:SubmitEvent): Promise<void> => {
         .then(res => res.json())
         .then(data => {
            if(!data.status) {
-               alert('login Error');
+               if(data.errors) injectErrors(data.errors);
            }
 
            else {

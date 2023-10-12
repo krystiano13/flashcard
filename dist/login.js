@@ -11,6 +11,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const form = document.querySelector('form');
 const usernameInput = document.querySelector('#usernameInput');
 const passwordInput = document.querySelector('#passwordInput');
+const errorsDiv = document.querySelector('.errors');
+const injectErrors = (errors) => {
+    errorsDiv.innerHTML = "";
+    errors.forEach((item) => {
+        const paragraph = document.createElement('p');
+        paragraph.innerText = item;
+        paragraph.className = "f-xs font-head color-bg mt-1";
+        errorsDiv === null || errorsDiv === void 0 ? void 0 : errorsDiv.appendChild(paragraph);
+    });
+};
 const handleSubmit = (e) => __awaiter(void 0, void 0, void 0, function* () {
     e.preventDefault();
     const formData = new FormData();
@@ -20,7 +30,8 @@ const handleSubmit = (e) => __awaiter(void 0, void 0, void 0, function* () {
         .then(res => res.json())
         .then(data => {
         if (!data.status) {
-            alert('login Error');
+            if (data.errors)
+                injectErrors(data.errors);
         }
         else {
             alert('Login went successfully');

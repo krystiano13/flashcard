@@ -81,14 +81,18 @@ class User
         $result = $query -> fetchAll();
 
         if($query -> rowCount() <= 0) {
-            echo json_encode(['status' => false]);
+            array_push($this->errors, 'User does not exists');
+            echo json_encode(['status' => false, 'errors' => $this->errors]);
         }
 
         else {
             if(password_verify($this -> password, $result[0]['password']))
                 echo json_encode(['status' => true]);
             else
-                echo json_encode(['status' => false]);
+            {
+                array_push($this->errors, 'Wrong password');
+                echo json_encode(['status' => false, 'errors' => $this->errors]);
+            }
         }
     }
 
