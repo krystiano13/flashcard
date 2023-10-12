@@ -19,7 +19,10 @@ class User
         if(!$this->username) array_push($this->errors, 'No username provided');
         if(!$this->password) array_push($this->errors, 'No password provided');
         if(!$this->email) array_push($this->errors, 'No email provided');
-        if(!$this->checkUsername()) array_push($this->errors, 'username must be unique');
+        if(!$this->checkUserInfo($this->username, 'username'))
+            array_push($this->errors, 'username must be unique');
+        if(!$this->checkUserInfo($this->email, 'email'))
+            array_push($this->errors, 'email must be unique');
 
         if($this->errors !== []) {
             echo json_encode(['status' => false, 'errors' => $this->errors]);
@@ -79,13 +82,13 @@ class User
         $this -> rep_password = $input;
     }
 
-    private function checkUsername(): bool {
+    private function checkUserInfo(string $info, string $type): bool {
         $database = new Database();
         $database -> connect();
 
         $query = $database->connection
-            ->prepare('SELECT username FROM users WHERE username=:username');
-        $query -> bindValue(':username', $this->username);
+            ->prepare("SELECT {$type} FROM users WHERE {$type}=:info");
+        $query -> bindValue(':info', $info);
 
         if($query -> rowCount() >= 1) return false;
         else return true;
