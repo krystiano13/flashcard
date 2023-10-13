@@ -14,13 +14,16 @@
 </head>
 <body>
     <main id="panel" class="row width-100 height-100 flex-col bg">
-        <div id="user" class="col-6 col-xxl-12 height-50 d-flex jc-center ai-center">
+        <div id="user" class="col-4 col-xxl-12 height-50 d-flex jc-center ai-center">
+            <div class="width-75 height-75 bg-primary br-rad-2 d-flex flex-col jc-center">
+                <h1 class="width-75 font-head color-bg m-1 ml-6 f-xxl f-600">Name: User</h1>
+                <h2 class="width-75 font-head color-bg m-1 ml-6 f-xl f-500">Joined: 12.10.2003</h2>
+            </div>
+        </div>
+        <div id="stats" class="col-4 col-xxl-12 height-50 d-flex jc-center ai-center">
             <div class="width-75 height-75 bg-primary br-rad-2"></div>
         </div>
-        <div id="stats" class="col-6 col-xxl-12 height-50 d-flex jc-center ai-center">
-            <div class="width-75 height-75 bg-primary br-rad-2"></div>
-        </div>
-        <div id="decks" class="col-6 col-xxl-12 height-100 d-flex jc-center ai-center">
+        <div id="decks" class="col-8 col-xxl-12 height-100 d-flex jc-center ai-center">
             <div class="width-75 height-75 bg-primary br-rad-2"></div>
         </div>
     </main>
