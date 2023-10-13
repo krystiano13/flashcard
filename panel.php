@@ -10,7 +10,6 @@
     <meta name="description" content="Simple flashcard app">
     <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
     <link rel="stylesheet" href="./styles/panel.css?v=11"/>
-
 </head>
 <body>
     <main id="panel" class="row width-100 height-100 flex-col bg">
@@ -21,7 +20,12 @@
             </div>
         </div>
         <div id="stats" class="col-4 col-xxl-12 height-50 d-flex jc-center ai-center">
-            <div class="width-75 height-75 bg-primary br-rad-2"></div>
+            <ul class="width-75 height-75 bg-primary br-rad-2 d-flex flex-col jc-center">
+                <li class="color-bg font-other f-l m-1 ml-6">Decks created : 0</li>
+                <li class="color-bg font-other f-l m-1 ml-6">Cards created : 0</li>
+                <li class="color-bg font-other f-l m-1 ml-6">Cards swiped : 0</li>
+                <li class="color-bg font-other f-l m-1 ml-6">Finished decks : 0</li>
+            </ul>
         </div>
         <div id="decks" class="col-8 col-xxl-12 height-100 d-flex jc-center ai-center">
             <div class="width-75 height-75 bg-primary br-rad-2"></div>
