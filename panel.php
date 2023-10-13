@@ -9,7 +9,8 @@
     <meta name="author" content="Krystian Zieja">
     <meta name="description" content="Simple flashcard app">
     <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
-    <link rel="stylesheet" href="./styles/login.css?v=11"/>
+    <link rel="stylesheet" href="./styles/panel.css?v=11"/>
+
 </head>
 <body>
     <main id="panel" class="row width-100 height-100 flex-col bg">
@@ -24,16 +25,4 @@
         </div>
     </main>
 </body>
-<style>
-    body {
-        overflow-x : hidden;
-    }
-
-    #panel {
-        @media screen and (max-width: 992px) {
-            height : 200%;
-            flex-wrap: nowrap;
-        }
-    }
-</style>
 </html>
