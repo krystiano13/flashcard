@@ -30,7 +30,7 @@ const handleSubmit = async (e:SubmitEvent): Promise<void> => {
            }
 
            else {
-               alert('Login went successfully');
+               window.location.href = '/flashcard/panel.php';
            }
         })
 }

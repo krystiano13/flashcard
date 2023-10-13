@@ -24,6 +24,7 @@ const handleRegister = async (e:SubmitEvent): Promise<void> => {
             }
             else {
                 alert("Register went successfully");
+                window.location.href = "/flashcard/";
             }
         })
 }

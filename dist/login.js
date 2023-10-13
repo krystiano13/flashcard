@@ -34,7 +34,7 @@ const handleSubmit = (e) => __awaiter(void 0, void 0, void 0, function* () {
                 injectErrors(data.errors);
         }
         else {
-            alert('Login went successfully');
+            window.location.href = '/flashcard/panel.php';
         }
     });
 });

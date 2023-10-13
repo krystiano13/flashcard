@@ -28,7 +28,7 @@
                class="m-1 mt-3 mb-3 font-other p-1 outline-none br-none br-b-solid br-b-2 br-b-accent bg-secondary color f-s"
                type="password" name="rep_password" placeholder="repeat password"/>
         <button class="br-none bg-accent-hover color-bg-hover mt-3 mb-3
-            m-1 font-head color f-500 f-s bg-secondary p-1 pr-5 pl-5 c-pointer" type="submit">Log In
+            m-1 font-head color f-500 f-s bg-secondary p-1 pr-5 pl-5 c-pointer" type="submit">Create Account
         </button>
         <a class="m-1 font-other color-secondary decoration-none color-hover color-bg-hover" href="index.php">Have an
             account ?</a>
