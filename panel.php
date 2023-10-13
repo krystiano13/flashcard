@@ -12,10 +12,28 @@
     <link rel="stylesheet" href="./styles/login.css?v=11"/>
 </head>
 <body>
-    <main class="row width-100 height-100 flex-col">
-        <div id="user" class="col-6 col-xxl-12 height-50"></div>
-        <div id="stats" class="col-6 col-xxl-12 height-50"></div>
-        <div id="decks" class="col-6 col-xxl-12 height-100"></div>
+    <main id="panel" class="row width-100 height-100 flex-col bg">
+        <div id="user" class="col-6 col-xxl-12 height-50 d-flex jc-center ai-center">
+            <div class="width-75 height-75 bg-primary br-rad-2"></div>
+        </div>
+        <div id="stats" class="col-6 col-xxl-12 height-50 d-flex jc-center ai-center">
+            <div class="width-75 height-75 bg-primary br-rad-2"></div>
+        </div>
+        <div id="decks" class="col-6 col-xxl-12 height-100 d-flex jc-center ai-center">
+            <div class="width-75 height-75 bg-primary br-rad-2"></div>
+        </div>
     </main>
 </body>
+<style>
+    body {
+        overflow-x : hidden;
+    }
+
+    #panel {
+        @media screen and (max-width: 992px) {
+            height : 200%;
+            flex-wrap: nowrap;
+        }
+    }
+</style>
 </html>
