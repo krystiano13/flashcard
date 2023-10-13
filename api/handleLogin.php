@@ -5,6 +5,8 @@ require_once '../classes/Login.php';
 
 use App\Login;
 
+session_start();
+
 $username = "";
 $password = "";
 

@@ -1,4 +1,12 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if(!isset($_SESSION['username'])) {
+    header('Location: /flashcard/index.php');
+}
+
+$user = $_SESSION['username'];
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +23,7 @@
     <main id="panel" class="row width-100 height-100 flex-col bg">
         <div id="user" class="col-4 col-xxl-12 height-50 d-flex jc-center ai-center">
             <div class="width-75 height-75 bg-primary br-rad-2 d-flex flex-col jc-center">
-                <h1 class="width-75 font-head color-bg m-1 ml-6 f-xxl f-600">Name: User</h1>
+                <h1 class="width-75 font-head color-bg m-1 ml-6 f-xxl f-600">Name: <?php echo $user; ?></h1>
                 <h2 class="width-75 font-head color-bg m-1 ml-6 f-xl f-500">Joined: 12.10.2003</h2>
             </div>
         </div>

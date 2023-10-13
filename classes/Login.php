@@ -41,8 +41,11 @@ class Login
         }
 
         else {
-            if(password_verify($this -> password, $result[0]['password']))
+            if(password_verify($this -> password, $result[0]['password'])) {
+                $_SESSION['username'] = $this->username;
                 echo json_encode(['status' => true]);
+            }
+
             else
             {
                 array_push($this->errors, 'Wrong password');
