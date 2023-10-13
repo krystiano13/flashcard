@@ -4,6 +4,10 @@ body {
     height : 100vh;
 }
 
+#logoutBtn {
+    transition: background-color 250ms, color 250ms;
+}
+
 #panel {
     @media screen and (max-width: 992px) {
         height : 200%;

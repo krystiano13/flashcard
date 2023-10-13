@@ -18,6 +18,7 @@ $user = $_SESSION['username'];
     <meta name="description" content="Simple flashcard app">
     <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
     <link rel="stylesheet" href="./styles/panel.css?v=11"/>
+    <script defer src="dist/panel.js"></script>
 </head>
 <body>
     <main id="panel" class="row width-100 height-100 flex-col bg">
@@ -25,6 +26,8 @@ $user = $_SESSION['username'];
             <div class="width-75 height-75 bg-primary br-rad-2 d-flex flex-col jc-center">
                 <h1 class="width-75 font-head color-bg m-1 ml-6 f-xxl f-600">Name: <?php echo $user; ?></h1>
                 <h2 class="width-75 font-head color-bg m-1 ml-6 f-xl f-500">Joined: 12.10.2003</h2>
+                <button class="color-bg-hover bg-accent-hover c-pointer color bg-secondary f-500 br-none br-b-2 br-b-solid br-b-accent
+                width-25 font-head p-1 pl-3 pr-3 m-1 ml-6" id="logoutBtn">Logout</button>
             </div>
         </div>
         <div id="stats" class="col-4 col-xxl-12 height-50 d-flex jc-center ai-center">
