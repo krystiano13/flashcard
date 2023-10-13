@@ -31,7 +31,7 @@ const handleRegister = (e) => __awaiter(void 0, void 0, void 0, function* () {
         }
         else {
             alert("Register went successfully");
-            window.location.href = "/flashcard/";
+            window.location.href = "/flashcard/index.php";
         }
     });
 });

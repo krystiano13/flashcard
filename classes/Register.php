@@ -9,6 +9,29 @@ use App\Database;
 class Register
 {
     use User;
+
+    private function addUserDataColumn(): bool {
+        $database = new Database();
+        $database->connect();
+
+        $query = $database->connection->prepare(
+            "INSERT INTO userdata VALUES(NULL,:username,:date,0,0,0,0)"
+        );
+
+        $date = new \DateTime('now');
+
+        $query -> bindValue(':username', $this->username);
+        $query -> bindValue(':date', $date -> format('Y-m-d'));
+
+        if($query -> execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
     public function register() {
         $this->errors = [];
 
@@ -44,6 +67,7 @@ class Register
 
         if($query -> execute()) {
             echo json_encode(['status' => true]);
+            $this->addUserDataColumn();
         }
         else {
             echo json_encode(['status' => false]);
