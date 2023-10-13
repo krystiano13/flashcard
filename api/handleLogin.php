@@ -1,9 +1,9 @@
 <?php
 
 namespace App;
-require_once '../classes/User.php';
+require_once '../classes/Login.php';
 
-use App\User;
+use App\Login;
 
 $username = "";
 $password = "";
@@ -16,7 +16,7 @@ if(isset($_POST['password'])) {
     $password = $_POST['password'];
 }
 
-$user = new User();
+$user = new Login();
 $user->setUsername($username);
 $user->setPassword($password);
 $user->login();
