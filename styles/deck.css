@@ -1,0 +1,25 @@
+body {
+    width : 100vw;
+    height: 100vh;
+}
+
+main {
+    @media screen and (max-width : 992px) {
+        flex-direction: column;
+    }
+}
+
+.el {
+    min-width : 25rem;
+    min-height : 25rem;
+
+    @media screen and (min-width : 2400px) {
+        min-width : 30rem;
+        min-height : 30rem;
+    }
+
+    @media screen and (min-width : 3200px) {
+        min-width : 40rem;
+        min-height : 40rem;
+    }
+}
