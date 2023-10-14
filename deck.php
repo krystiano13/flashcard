@@ -25,6 +25,9 @@
         <div id="add" class="el bg-hover bg-accent-hover d-flex br-rad-2 jc-center ai-center font-head m-2 bg-primary color-bg f-600 f-xl c-pointer">
             Add/Remove Cards
         </div>
+        <div id="back" class="el bg-hover bg-accent-hover d-flex br-rad-2 jc-center ai-center font-head m-2 bg-primary color-bg f-600 f-xl c-pointer">
+            Go Back
+        </div>
     </main>
 </body>
 </html>
