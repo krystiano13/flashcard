@@ -1,12 +1,18 @@
 <?php
 
-namespace App\classes;
+namespace App;
 require_once 'Database.php';
 
 use App\Database;
 class Info
 {
     public string $username;
+    public string $createdAt = '0000-00-00';
+
+    public int $cards = 0;
+    public int $decks = 0;
+    public int $decksSolved = 0;
+    public int $cardsSolved = 0;
 
     public function __invoke(string $username)
     {
@@ -22,10 +28,12 @@ class Info
         $query -> bindValue(':username', $this->username);
 
         if($query -> execute()) {
-            echo json_encode(['status' => true, 'data' => $query -> fetchAll()]);
-        }
-        else {
-            echo json_encode(['status' => false]);
+            $result = $query -> fetchAll();
+            $this->createdAt = $result[0]['created_at'];
+            $this->decks = $result[0]['decks'];
+            $this->cards = $result[0]['cards'];
+            $this->cardsSolved = $result[0]['cards_solved'];
+            $this->decksSolved = $result[0]['decks_solved'];
         }
     }
 

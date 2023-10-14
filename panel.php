@@ -1,10 +1,19 @@
 <?php
+
+namespace App;
+require_once 'classes/Info.php';
+
+use App\Info;
+
 session_start();
 if(!isset($_SESSION['username'])) {
     header('Location: /flashcard/index.php');
 }
 
 $user = $_SESSION['username'];
+
+$info = new Info();
+$info($user);
 
 ?>
 
@@ -25,17 +34,17 @@ $user = $_SESSION['username'];
         <div id="user" class="col-4 col-xxl-12 height-50 d-flex jc-center ai-center">
             <div class="width-75 height-75 bg-primary br-rad-2 d-flex flex-col jc-center">
                 <h1 class="width-75 font-head color-bg m-1 ml-6 f-xxl f-600">Name: <?php echo $user; ?></h1>
-                <h2 class="width-75 font-head color-bg m-1 ml-6 f-xl f-500">Joined: 12.10.2003</h2>
+                <h2 class="width-75 font-head color-bg m-1 ml-6 f-xl f-500">Joined: <?php echo $info->createdAt; ?></h2>
                 <button class="color-bg-hover bg-accent-hover c-pointer color bg-secondary f-500 br-none br-b-2 br-b-solid br-b-accent
                 width-25 font-head p-1 pl-3 pr-3 m-1 ml-6" id="logoutBtn">Logout</button>
             </div>
         </div>
         <div id="stats" class="col-4 col-xxl-12 height-50 d-flex jc-center ai-center">
             <ul class="width-75 height-75 bg-primary br-rad-2 d-flex flex-col jc-center">
-                <li class="color-bg font-other f-l m-1 ml-6">Decks created : 0</li>
-                <li class="color-bg font-other f-l m-1 ml-6">Cards created : 0</li>
-                <li class="color-bg font-other f-l m-1 ml-6">Cards swiped : 0</li>
-                <li class="color-bg font-other f-l m-1 ml-6">Finished decks : 0</li>
+                <li class="color-bg font-other f-l m-1 ml-6">Decks created : <?php echo $info->decks; ?></li>
+                <li class="color-bg font-other f-l m-1 ml-6">Cards created : <?php echo $info->cards; ?></li>
+                <li class="color-bg font-other f-l m-1 ml-6">Cards swiped : <?php echo $info->cardsSolved; ?></li>
+                <li class="color-bg font-other f-l m-1 ml-6">Finished decks : <?php echo $info->decksSolved; ?></li>
             </ul>
         </div>
         <div id="decks" class="col-8 col-xxl-12 height-100 d-flex jc-center ai-center">
