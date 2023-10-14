@@ -2,18 +2,27 @@ const logoutButton: HTMLButtonElement | null = document.querySelector('#logoutBt
 const decksDiv: HTMLDivElement | null = document.querySelector('#decks');
 
 const logout = async (): Promise<void> => {
-    await fetch('http://localhost/flashcard/api/handleLogout.php', { method: "POST" })
+    await fetch('http://localhost/flashcard/api/handleLogout.php', {method: "POST"})
         .then(res => res.json())
         .then(data => {
-            if(data) {
+            if (data) {
                 window.location.href = '/flashcard/';
             }
         })
 }
 
-const pickDeck = (e:MouseEvent) => {
-    if((e.target as HTMLElement)?.tagName === "P") {
-        console.log(e.target);
+const pickDeck = async (e: MouseEvent) => {
+    const el: HTMLElement = e.target as HTMLElement;
+    if (el?.tagName === "P") {
+        const data: FormData = new FormData();
+        data.append('deck_id', el.id);
+        await fetch('http://localhost/flashcard/api/handleChooseDeck.php',
+            {method: 'POST', body: data}
+        )
+            .then(res => res.json())
+            .then(data => {
+                if (data.status) window.location.href = '/flashcard/deck.php';
+            })
     }
 }
 

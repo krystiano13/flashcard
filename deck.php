@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION['deck'])) {
+        header('Location: /flashcard/panel.php');
+    }
 ?>
 
 <!DOCTYPE html>

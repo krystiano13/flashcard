@@ -19,11 +19,18 @@ const logout = () => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
 });
-const pickDeck = (e) => {
-    var _a;
-    if (((_a = e.target) === null || _a === void 0 ? void 0 : _a.tagName) === "P") {
-        console.log(e.target);
+const pickDeck = (e) => __awaiter(void 0, void 0, void 0, function* () {
+    const el = e.target;
+    if ((el === null || el === void 0 ? void 0 : el.tagName) === "P") {
+        const data = new FormData();
+        data.append('deck_id', el.id);
+        yield fetch('http://localhost/flashcard/api/handleChooseDeck.php', { method: 'POST', body: data })
+            .then(res => res.json())
+            .then(data => {
+            if (data.status)
+                window.location.href = '/flashcard/deck.php';
+        });
     }
-};
+});
 decksDiv === null || decksDiv === void 0 ? void 0 : decksDiv.addEventListener('click', (e) => pickDeck(e));
 logoutButton === null || logoutButton === void 0 ? void 0 : logoutButton.addEventListener('click', () => logout());
