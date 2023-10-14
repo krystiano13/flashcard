@@ -16,6 +16,7 @@
     <meta name="description" content="Simple flashcard app">
     <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
     <link rel="stylesheet" href="./styles/deck.css?v=11"/>
+    <script defer src="dist/deck.js"></script>
 </head>
 <body>
     <main class="width-100 height-100 d-flex jc-center ai-center">
