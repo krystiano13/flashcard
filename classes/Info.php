@@ -6,13 +6,14 @@ require_once 'Database.php';
 use App\Database;
 class Info
 {
-    public string $username;
+    private string $username;
     public string $createdAt = '0000-00-00';
 
     public int $cards = 0;
     public int $decks = 0;
     public int $decksSolved = 0;
     public int $cardsSolved = 0;
+    public array $decksInfo = [];
 
     public function __invoke(string $username)
     {
@@ -35,6 +36,22 @@ class Info
             $this->cardsSolved = $result[0]['cards_solved'];
             $this->decksSolved = $result[0]['decks_solved'];
         }
+
+        $this->getDecksInfo();
     }
 
+    private function getDecksInfo() {
+        $database = new Database();
+        $database->connect();
+
+        $query = $database->connection->prepare(
+            "SELECT deckName, cards FROM decks WHERE username=:username"
+        );
+
+        $query->bindValue(':username', $this->username);
+
+        if($query->execute()) {
+            $this->decksInfo = $query -> fetchAll();
+        }
+    }
 }

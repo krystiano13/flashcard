@@ -48,7 +48,15 @@ $info($user);
             </ul>
         </div>
         <div id="decks" class="col-8 col-xxl-12 height-100 d-flex jc-center ai-center">
-            <div class="width-75 height-75 bg-primary br-rad-2"></div>
+            <div class="width-75 height-75 bg-primary br-rad-2">
+                <?php
+                    if(count($info->decksInfo) > 0) {
+                        for ($i = 0; $i < count($info->decksInfo); $i++) {
+                            echo "<p>{$info->decksInfo[$i]['deckName']} - cards : {$info->decksInfo[$i]['cards']}</p>";
+                        }
+                    }
+                ?>
+            </div>
         </div>
     </main>
 </body>
