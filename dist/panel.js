@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const logoutButton = document.querySelector('#logoutBtn');
+const decksDiv = document.querySelector('#decks');
 const logout = () => __awaiter(void 0, void 0, void 0, function* () {
     yield fetch('http://localhost/flashcard/api/handleLogout.php', { method: "POST" })
         .then(res => res.json())
@@ -18,4 +19,11 @@ const logout = () => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
 });
+const pickDeck = (e) => {
+    var _a;
+    if (((_a = e.target) === null || _a === void 0 ? void 0 : _a.tagName) === "P") {
+        console.log(e.target);
+    }
+};
+decksDiv === null || decksDiv === void 0 ? void 0 : decksDiv.addEventListener('click', (e) => pickDeck(e));
 logoutButton === null || logoutButton === void 0 ? void 0 : logoutButton.addEventListener('click', () => logout());
