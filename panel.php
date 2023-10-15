@@ -51,7 +51,7 @@ $info($user);
             <div id="decks" class="width-75 height-75 bg-primary br-rad-2">
                 <h2 class="font-head color-bg f-xxl m-3 ml-6 mt-6">All decks:</h2>
                 <div class="width-100 height-75 overflow-y-auto d-flex flex-col m-3 ml-6">
-                    <button class='box-border br-none f-xl width-75 mt-1 max-width-75 font-other color bg-secondary p-1 f-s f-500 c-pointer br-rad-2'>+</button>
+                    <button id="create" class='box-border br-none f-xl width-75 mt-1 max-width-75 font-other color bg-secondary p-1 f-s f-500 c-pointer br-rad-2'>+</button>
                     <?php
                     if(count($info->decksInfo) > 0) {
                         for ($i = 0; $i < count($info->decksInfo); $i++) {

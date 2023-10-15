@@ -10,6 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const logoutButton = document.querySelector('#logoutBtn');
 const decksDiv = document.querySelector('#decks');
+const createDeckView = () => {
+    window.location.href = '/flashcard/createDeck.php';
+};
 const logout = () => __awaiter(void 0, void 0, void 0, function* () {
     yield fetch('http://localhost/flashcard/api/handleLogout.php', { method: "POST" })
         .then(res => res.json())
@@ -21,6 +24,7 @@ const logout = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const pickDeck = (e) => __awaiter(void 0, void 0, void 0, function* () {
     const el = e.target;
+    console.log(el);
     if ((el === null || el === void 0 ? void 0 : el.tagName) === "P") {
         const data = new FormData();
         data.append('deck_id', el.id);
@@ -30,6 +34,9 @@ const pickDeck = (e) => __awaiter(void 0, void 0, void 0, function* () {
             if (data.status)
                 window.location.href = '/flashcard/deck.php';
         });
+    }
+    else if (el.id === "create") {
+        createDeckView();
     }
 });
 decksDiv === null || decksDiv === void 0 ? void 0 : decksDiv.addEventListener('click', (e) => pickDeck(e));
