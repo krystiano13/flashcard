@@ -5,10 +5,9 @@ use App\Deck;
 
 session_start();
 
-$username = '';
+$username = $_SESSION['username'];
 $deckName = '';
 
-if(isset($_POST['username'])) $username = $_POST['username'];
 if(isset($_POST['deckName'])) $deckName = $_POST['deckName'];
 
 $deck = new Deck($username, $deckName);

@@ -21,6 +21,11 @@ class Deck
         $database -> connect();
         $con = $database -> connection;
 
+        if(!$this->username || !$this->deckName) {
+            echo json_encode(['status' => false]);
+            return;
+        }
+
         $query = $con -> prepare(
             "INSERT INTO decks VALUES(NULL, :username, :name, 0)"
         );
