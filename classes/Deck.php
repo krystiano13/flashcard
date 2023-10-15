@@ -1,6 +1,6 @@
 <?php
 
-namespace App\classes;
+namespace App;
 require_once 'Database.php';
 
 use App\Database;

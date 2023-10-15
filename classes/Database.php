@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 class Database
 {
     private static string $username = "root";
