@@ -11,6 +11,26 @@ class Card
     private string $cardFirstSide;
     private string $cardSecondSide;
 
+    public function showCards() {
+        if(!$this->deckId) {
+            echo json_encode(['status' => false]);
+            return;
+        }
+
+        $database = new Database();
+        $database->connect();
+        $con = $database->connection;
+
+        $query = $con -> prepare(
+            "SELECT * FROM cards WHERE deck_id=:id"
+        );
+
+        $query -> bindValue(':id', $this->deckId);
+        $query -> execute();
+
+        echo json_encode(['status' => true, 'data' => $query -> fetchAll()]);
+    }
+
     public function addCard()
     {
         $database = new Database();
