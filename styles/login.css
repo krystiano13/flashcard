@@ -3,7 +3,7 @@ body {
     height : 100vh;
 }
 
-#form {
+#form, #cardForm {
     animation : formAppear 400ms;
 }
 

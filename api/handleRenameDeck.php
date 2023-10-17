@@ -4,7 +4,8 @@ session_start();
 
 if(
     !isset($_POST['id']) ||
-    !isset($_POST['name'])
+    !isset($_POST['name']) ||
+    !isset($_SESSION['deck'])
 ) {
     echo json_encode(['status' => false]);
     return;
@@ -16,5 +17,5 @@ use App\Deck;
 $id = $_POST['id'];
 $name = $_POST['name'];
 
-$deck = new Deck();
+$deck = new Deck('','');
 $deck -> renameDeck($name, (int)$id);
