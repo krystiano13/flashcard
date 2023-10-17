@@ -16,6 +16,32 @@ class Deck
         $this -> deckName = $name;
     }
 
+    public function renameDeck(string $name, int $id) {
+        $database = new Database();
+        $database -> connect();
+        $con = $database -> connection;
+
+        if(!$name || !$id) {
+            echo json_encode(['status' => false]);
+            return;
+        }
+
+        $query = $con -> prepare(
+            "UPDATE decks set deckName=:name WHERE id=:id"
+        );
+
+        $query -> bindValue(":name", $name);
+        $query -> bindValue(":id", $id);
+
+        if($query -> execute()) {
+            echo json_encode(['status' => true]);
+        }
+
+        else {
+            echo json_encode(['status' => false]);
+        }
+    }
+
     public function createDeck() {
         $database = new Database();
         $database -> connect();
