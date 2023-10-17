@@ -9,6 +9,7 @@ class Info
     private string $username;
     public string $createdAt = '0000-00-00';
 
+    public int $id = 0;
     public int $cards = 0;
     public int $decks = 0;
     public int $decksSolved = 0;
@@ -23,13 +24,14 @@ class Info
         $database -> connect();
 
         $query = $database -> connection -> prepare(
-            "SELECT created_at, decks, cards, decks_solved, cards_solved FROM userdata WHERE username=:username"
+            "SELECT id,created_at, decks, cards, decks_solved, cards_solved FROM userdata WHERE username=:username"
         );
 
         $query -> bindValue(':username', $this->username);
 
         if($query -> execute()) {
             $result = $query -> fetchAll();
+            $this->id = $result[0]['id'];
             $this->createdAt = $result[0]['created_at'];
             $this->decks = $result[0]['decks'];
             $this->cards = $result[0]['cards'];
@@ -45,7 +47,7 @@ class Info
         $database->connect();
 
         $query = $database->connection->prepare(
-            "SELECT deckName, cards FROM decks WHERE username=:username"
+            "SELECT id,deckName, cards FROM decks WHERE username=:username"
         );
 
         $query->bindValue(':username', $this->username);

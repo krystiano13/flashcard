@@ -55,7 +55,7 @@ $info($user);
                     <?php
                     if(count($info->decksInfo) > 0) {
                         for ($i = 0; $i < count($info->decksInfo); $i++) {
-                            echo "<p id='{$i}' class='width-75 mt-1 max-width-75 font-other color bg-secondary p-2 f-s f-500 c-pointer br-rad-2'>";
+                            echo "<p id='{$info->decksInfo[$i]['id']}' class='width-75 mt-1 max-width-75 font-other color bg-secondary p-2 f-s f-500 c-pointer br-rad-2'>";
                             echo "{$info->decksInfo[$i]['deckName']} - cards : {$info->decksInfo[$i]['cards']}";
                             echo "</p>";
                         }
