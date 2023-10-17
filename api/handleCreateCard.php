@@ -8,7 +8,6 @@ if(
     !isset($_POST['secondSide'])
 ) {
     echo json_encode(['status' => false]);
-    return;
 }
 
 require_once "../classes/Card.php";
