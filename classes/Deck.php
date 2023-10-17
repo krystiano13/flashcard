@@ -16,6 +16,31 @@ class Deck
         $this -> deckName = $name;
     }
 
+    public function deleteDeck(int $id) {
+        if(!$id) {
+            echo json_encode(['status' => false]);
+            return;
+        }
+
+        $database = new Database();
+        $database -> connect();
+        $con = $database -> connection;
+
+        $query = $con -> prepare(
+            "DELETE FROM decks WHERE id=:id"
+        );
+
+        $query -> bindValue(":id", $id);
+
+        if($query -> execute()) {
+            echo json_encode(['status' => true]);
+        }
+
+        else {
+            echo json_encode(['status' => false]);
+        }
+    }
+
     public function renameDeck(string $name, int $id) {
         $database = new Database();
         $database -> connect();
