@@ -27,7 +27,7 @@ $card = new Card();
 </head>
 <body>
     <header class="width-100 bg-primary color-bg d-flex ai-center jc-center font-head f-s">
-        <h1>Deck Name: Test | User : Admin</h1>
+        <h1>Deck Name: <?php echo $_SESSION['deckName']; ?> | User : <?php echo $_SESSION['username'] ?></h1>
     </header>
     <main class="width-100 d-flex flex-col ai-center">
         <?php

@@ -28,6 +28,7 @@ const pickDeck = (e) => __awaiter(void 0, void 0, void 0, function* () {
     if ((el === null || el === void 0 ? void 0 : el.tagName) === "P") {
         const data = new FormData();
         data.append('deck_id', el.id);
+        data.append('deckName', el.innerText);
         yield fetch('http://localhost/flashcard/api/handleChooseDeck.php', { method: 'POST', body: data })
             .then(res => res.json())
             .then(data => {

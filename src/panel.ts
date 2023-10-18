@@ -21,6 +21,7 @@ const pickDeck = async (e: MouseEvent) => {
     if (el?.tagName === "P") {
         const data: FormData = new FormData();
         data.append('deck_id', el.id);
+        data.append('deckName', el.innerText);
         await fetch('http://localhost/flashcard/api/handleChooseDeck.php',
             {method: 'POST', body: data}
         )
