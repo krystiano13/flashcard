@@ -1,0 +1,18 @@
+header {
+    height : 10%;
+    padding : 1rem;
+}
+
+header h1 {
+    @media screen and (max-width: 992px) {
+        font-size : 1.5rem;
+    }
+}
+
+main { height: 90%; }
+
+.cardElement {
+    @media screen and (max-width : 992px) {
+        width : 90%;
+    }
+}

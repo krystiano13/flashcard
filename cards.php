@@ -23,13 +23,13 @@ $card = new Card();
     <meta name="author" content="Krystian Zieja">
     <meta name="description" content="Simple flashcard app">
     <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
-    <link rel="stylesheet" href="./styles/panel.css?v=11"/>
+    <link rel="stylesheet" href="./styles/cards.css?v=1" />
 </head>
 <body>
     <header class="width-100 bg-primary color-bg d-flex ai-center jc-center font-head f-s">
         <h1>Deck Name: Test | User : Admin</h1>
     </header>
-    <main class="width-100">
+    <main class="width-100 d-flex flex-col ai-center">
         <?php
             require_once "./modules/cardList.php";
             foreach($result as $item) {
@@ -38,8 +38,4 @@ $card = new Card();
         ?>
     </main>
 </body>
-<style>
-    header { height : 10%; }
-    main { height: 90%; }
-</style>
 </html>
