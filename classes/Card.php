@@ -13,7 +13,7 @@ class Card
 
     public function showCards() {
         if(!$this->deckId) {
-            echo json_encode(['status' => false]);
+            header('Location: /flashcard/panel.php');
             return;
         }
 
@@ -28,7 +28,7 @@ class Card
         $query -> bindValue(':id', $this->deckId);
         $query -> execute();
 
-        echo json_encode(['status' => true, 'data' => $query -> fetchAll()]);
+        return $query -> fetchAll();
     }
 
     public function addCard()

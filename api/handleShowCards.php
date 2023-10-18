@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_SESSION['deck'])) {
-    echo json_encode(['status' => false]);
+    header('Location: /flashcard/panel.php');
     return;
 }
 
@@ -13,6 +13,7 @@ use App\Card;
 $id = $_SESSION['id'];
 
 $card = new Card();
-$card
+$result =
+    $card
     ->setDeckId((int)$id)
     ->showCards();
