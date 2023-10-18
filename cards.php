@@ -1,5 +1,17 @@
 <?php
-    require_once './api/handleShowCards.php';
+session_start();
+
+if(!isset($_SESSION['deck'])) {
+    header('Location: /flashcard/panel.php');
+    return;
+}
+
+require_once "./classes/Card.php";
+use App\Card;
+
+$id = $_SESSION['deck'];
+$card = new Card();
+    $result = (array)$card -> setDeckId($id) -> showCards();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +30,12 @@
         <h1>Deck Name: Test | User : Admin</h1>
     </header>
     <main>
-
+        <?php
+            require_once "./modules/cardList.php";
+            foreach($result as $item) {
+                echo generateCardListItem($item['one_side'], $item['id']);
+            }
+        ?>
     </main>
 </body>
 </html>
