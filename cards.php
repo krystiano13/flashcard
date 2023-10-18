@@ -1,5 +1,5 @@
 <?php
-    require_once 'api/handleShowCards.php';
+    require_once './api/handleShowCards.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,4 +13,12 @@
     <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
     <link rel="stylesheet" href="./styles/panel.css?v=11"/>
 </head>
+<body>
+    <header>
+        <h1>Deck Name: Test | User : Admin</h1>
+    </header>
+    <main>
+
+    </main>
+</body>
 </html>

@@ -7,13 +7,9 @@ if(!isset($_SESSION['deck'])) {
     return;
 }
 
-require_once "../classes/Card.php";
+require_once "./classes/Card.php";
 use App\Card;
 
-$id = $_SESSION['id'];
-
+$id = $_SESSION['deck'];
 $card = new Card();
-$result =
-    $card
-    ->setDeckId((int)$id)
-    ->showCards();
+$result = (array)$card -> setDeckId($id) -> showCards();
