@@ -1,6 +1,7 @@
 header {
     height : 10%;
     padding : 1rem;
+    animation: headerAppear 300ms ease-out;
 }
 
 header h1 {
@@ -12,7 +13,37 @@ header h1 {
 main { height: 90%; }
 
 .cardElement {
+    animation : cardItemAppear 600ms ease-in-out;
     @media screen and (max-width : 992px) {
         width : 90%;
     }
+}
+
+@keyframes cardItemAppear {
+    0% {
+        transform: translateX(-300px);
+        opacity : 0;
+    }
+
+    50% {
+        transform: translateX(-300px);
+        opacity : 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity : 1;
+    }
+}
+
+@keyframes headerAppear {
+   from {
+       transform: translateY(-400px);
+       opacity : 0;
+   }
+
+   to {
+       transform: translateY(0px);
+       opacity : 1;
+   }
 }
