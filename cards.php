@@ -26,10 +26,10 @@ $card = new Card();
     <link rel="stylesheet" href="./styles/panel.css?v=11"/>
 </head>
 <body>
-    <header>
+    <header class="width-100 bg-primary color-bg d-flex ai-center jc-center font-head f-s">
         <h1>Deck Name: Test | User : Admin</h1>
     </header>
-    <main>
+    <main class="width-100">
         <?php
             require_once "./modules/cardList.php";
             foreach($result as $item) {
@@ -38,4 +38,8 @@ $card = new Card();
         ?>
     </main>
 </body>
+<style>
+    header { height : 10%; }
+    main { height: 90%; }
+</style>
 </html>
