@@ -40,7 +40,7 @@ class Card
         }
     }
 
-    public function deleteCard(int $id) {
+    public function deleteCard(string $id) {
         if(!$id) {
             echo json_encode(['status' => false]);
             return;

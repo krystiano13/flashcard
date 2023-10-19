@@ -24,6 +24,7 @@ $card = new Card();
     <meta name="description" content="Simple flashcard app">
     <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
     <link rel="stylesheet" href="./styles/cards.css?v=1" />
+    <script defer src="dist/cards.js"></script>
 </head>
 <body>
     <header class="width-100 bg-primary color-bg d-flex ai-center jc-center font-head f-s">
