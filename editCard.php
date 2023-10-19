@@ -35,7 +35,7 @@
                class="m-1 mt-3 mb-3 font-other p-1 outline-none br-none br-b-solid br-b-2 br-b-accent bg-secondary color f-s"
                type="text" name="secondSide" placeholder="Card's second side">
         <button class="br-none bg-accent-hover color-bg-hover mt-3 mb-3
-            m-1 font-head color f-500 f-s bg-secondary p-1 pr-5 pl-5 c-pointer" type="submit">Add
+            m-1 font-head color f-500 f-s bg-secondary p-1 pr-5 pl-5 c-pointer" type="submit">Edit
         </button>
         <div class="errors"></div>
     </form>
