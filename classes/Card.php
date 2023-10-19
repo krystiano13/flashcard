@@ -11,7 +11,36 @@ class Card
     private string $cardFirstSide;
     private string $cardSecondSide;
 
-    public function deleteCards(int $id) {
+    public function updateCard(int $id) {
+        if(!$id) {
+            echo json_encode(['status' => false]);
+            return;
+        }
+
+        $database = new Database();
+        $database->connect();
+        $con = $database->connection;
+
+        $query = $con -> prepare(
+            "UPDATE cards set deck_id=:did, one_side=:os, second_side=:ss WHERE id=:id"
+        );
+
+        if(
+            $query -> execute([
+                ':did' => $this -> deckId,
+                ':os' => $this -> cardFirstSide,
+                ':ss' => $this -> cardSecondSide,
+                ':id' => $id
+            ])
+        ) {
+            echo json_encode(['status' => true]);
+        }
+        else {
+            echo json_encode(['status' => false]);
+        }
+    }
+
+    public function deleteCard(int $id) {
         if(!$id) {
             echo json_encode(['status' => false]);
             return;
