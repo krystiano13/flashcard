@@ -11,6 +11,28 @@ class Card
     private string $cardFirstSide;
     private string $cardSecondSide;
 
+    public function deleteCards(int $id) {
+        if(!$id) {
+            echo json_encode(['status' => false]);
+            return;
+        }
+
+        $database = new Database();
+        $database->connect();
+        $con = $database->connection;
+
+        $query = $con -> prepare("DELETE FROM cards WHERE id=:id");
+        $query -> bindValue(":id", $id);
+
+        if($query -> execute()) {
+            echo json_encode(['status' => true]);
+        }
+
+        else {
+            echo json_encode(['status' => false]);
+        }
+    }
+
     public function showCards() {
         if(!$this->deckId) {
             header('Location: /flashcard/panel.php');
