@@ -11,8 +11,37 @@ class Card
     private string $cardFirstSide;
     private string $cardSecondSide;
 
-    public function updateCard(int $id) {
-        if(!$id) {
+    public function getOneCard(string $id)
+    {
+        if (!$id) {
+            return array();
+        }
+
+        $database = new Database();
+        $database->connect();
+        $con = $database->connection;
+
+        $query = $con->prepare(
+            "SELECT * FROM cards WHERE id=:id"
+        );
+        $query->bindValue(':id', $id);
+        $query->execute();
+
+        if ($query->rowCount() <= 0) return array();
+        else {
+            $result = $query->fetchAll();
+            return array(
+                "id" => $result[0]['id'],
+                "one" => $result[0]['one_side'],
+                "second" => $result[0]['second_side']
+            );
+        }
+
+    }
+
+    public function updateCard(string $id)
+    {
+        if (!$id) {
             echo json_encode(['status' => false]);
             return;
         }
@@ -21,27 +50,27 @@ class Card
         $database->connect();
         $con = $database->connection;
 
-        $query = $con -> prepare(
+        $query = $con->prepare(
             "UPDATE cards set deck_id=:did, one_side=:os, second_side=:ss WHERE id=:id"
         );
 
-        if(
-            $query -> execute([
-                ':did' => $this -> deckId,
-                ':os' => $this -> cardFirstSide,
-                ':ss' => $this -> cardSecondSide,
+        if (
+            $query->execute([
+                ':did' => $this->deckId,
+                ':os' => $this->cardFirstSide,
+                ':ss' => $this->cardSecondSide,
                 ':id' => $id
             ])
         ) {
             echo json_encode(['status' => true]);
-        }
-        else {
+        } else {
             echo json_encode(['status' => false]);
         }
     }
 
-    public function deleteCard(string $id) {
-        if(!$id) {
+    public function deleteCard(string $id)
+    {
+        if (!$id) {
             echo json_encode(['status' => false]);
             return;
         }
@@ -50,20 +79,19 @@ class Card
         $database->connect();
         $con = $database->connection;
 
-        $query = $con -> prepare("DELETE FROM cards WHERE id=:id");
-        $query -> bindValue(":id", $id);
+        $query = $con->prepare("DELETE FROM cards WHERE id=:id");
+        $query->bindValue(":id", $id);
 
-        if($query -> execute()) {
+        if ($query->execute()) {
             echo json_encode(['status' => true]);
-        }
-
-        else {
+        } else {
             echo json_encode(['status' => false]);
         }
     }
 
-    public function showCards() {
-        if(!$this->deckId) {
+    public function showCards()
+    {
+        if (!$this->deckId) {
             header('Location: /flashcard/panel.php');
             return;
         }
@@ -72,14 +100,14 @@ class Card
         $database->connect();
         $con = $database->connection;
 
-        $query = $con -> prepare(
+        $query = $con->prepare(
             "SELECT * FROM cards WHERE deck_id=:id"
         );
 
-        $query -> bindValue(':id', $this->deckId);
-        $query -> execute();
+        $query->bindValue(':id', $this->deckId);
+        $query->execute();
 
-        return $query -> fetchAll();
+        return $query->fetchAll();
     }
 
     public function addCard()
