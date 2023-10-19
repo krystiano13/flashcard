@@ -10,7 +10,7 @@ deckForm?.addEventListener('submit', async (e:SubmitEvent) => {
     const data:FormData = new FormData();
     data.append('deckName',deckNameInput?.value as string);
 
-    await fetch('http://localhost/flashcard/api/handleCreateDeck.php',
+    await fetch('http://localhost:8080/flashcard/api/handleCreateDeck.php',
         {
             method : "POST",
             body: data

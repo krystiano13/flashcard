@@ -6,7 +6,7 @@ const createDeckView = () => {
 }
 
 const logout = async (): Promise<void> => {
-    await fetch('http://localhost/flashcard/api/handleLogout.php', {method: "POST"})
+    await fetch('http://localhost:8080/flashcard/api/handleLogout.php', {method: "POST"})
         .then(res => res.json())
         .then(data => {
             if (data) {
@@ -22,7 +22,7 @@ const pickDeck = async (e: MouseEvent) => {
         const data: FormData = new FormData();
         data.append('deck_id', el.id);
         data.append('deckName', el.innerText);
-        await fetch('http://localhost/flashcard/api/handleChooseDeck.php',
+        await fetch('http://localhost:8080/flashcard/api/handleChooseDeck.php',
             {method: 'POST', body: data}
         )
             .then(res => res.json())

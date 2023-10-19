@@ -14,7 +14,7 @@ deckForm === null || deckForm === void 0 ? void 0 : deckForm.addEventListener('s
     e.preventDefault();
     const data = new FormData();
     data.append('deckName', deckNameInput === null || deckNameInput === void 0 ? void 0 : deckNameInput.value);
-    yield fetch('http://localhost/flashcard/api/handleCreateDeck.php', {
+    yield fetch('http://localhost:8080/flashcard/api/handleCreateDeck.php', {
         method: "POST",
         body: data
     })

@@ -15,7 +15,7 @@ const injectRegErrors = (errors: string[]) => {
 const handleRegister = async (e:SubmitEvent): Promise<void> => {
     e.preventDefault();
     const formData: FormData = new FormData(registerForm as HTMLFormElement);
-    await fetch('http://localhost/flashcard/api/handleRegister.php', { method: "POST", body: formData })
+    await fetch('http://localhost:8080/flashcard/api/handleRegister.php', { method: "POST", body: formData })
         .then(res => res.json())
         .then(data => {
             if(!data.status) {

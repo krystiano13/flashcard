@@ -16,7 +16,7 @@ const create = (e) => __awaiter(void 0, void 0, void 0, function* () {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append('id', cardMain === null || cardMain === void 0 ? void 0 : cardMain.id);
-    yield fetch('http://localhost/flashcard/api/handleCreateCard.php', { method: "POST", body: formData })
+    yield fetch('http://localhost:8080/flashcard/api/handleCreateCard.php', { method: "POST", body: formData })
         .then(res => res.json())
         .then(data => {
         if (data.status) {

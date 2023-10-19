@@ -22,7 +22,7 @@ const handleSubmit = async (e:SubmitEvent): Promise<void> => {
     formData.append('password', passwordInput?.value as string);
 
 
-    await fetch('http://localhost/flashcard/api/handleLogin.php', { method: "POST", body: formData })
+    await fetch('http://localhost:8080/flashcard/api/handleLogin.php', { method: "POST", body: formData })
         .then(res => res.json())
         .then(data => {
            if(!data.status) {

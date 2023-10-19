@@ -22,7 +22,7 @@ const injectRegErrors = (errors) => {
 const handleRegister = (e) => __awaiter(void 0, void 0, void 0, function* () {
     e.preventDefault();
     const formData = new FormData(registerForm);
-    yield fetch('http://localhost/flashcard/api/handleRegister.php', { method: "POST", body: formData })
+    yield fetch('http://localhost:8080/flashcard/api/handleRegister.php', { method: "POST", body: formData })
         .then(res => res.json())
         .then(data => {
         if (!data.status) {

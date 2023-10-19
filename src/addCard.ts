@@ -9,7 +9,7 @@ const create = async (e: SubmitEvent): Promise<void> => {
     const formData: FormData = new FormData(e.target as HTMLFormElement);
     formData.append('id',cardMain?.id as string);
 
-    await fetch('http://localhost/flashcard/api/handleCreateCard.php',
+    await fetch('http://localhost:8080/flashcard/api/handleCreateCard.php',
         { method : "POST", body: formData }
     )
         .then(res => res.json())

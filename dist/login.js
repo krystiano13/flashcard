@@ -26,7 +26,7 @@ const handleSubmit = (e) => __awaiter(void 0, void 0, void 0, function* () {
     const formData = new FormData();
     formData.append('username', usernameInput === null || usernameInput === void 0 ? void 0 : usernameInput.value);
     formData.append('password', passwordInput === null || passwordInput === void 0 ? void 0 : passwordInput.value);
-    yield fetch('http://localhost/flashcard/api/handleLogin.php', { method: "POST", body: formData })
+    yield fetch('http://localhost:8080/flashcard/api/handleLogin.php', { method: "POST", body: formData })
         .then(res => res.json())
         .then(data => {
         if (!data.status) {

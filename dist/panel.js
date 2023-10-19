@@ -14,7 +14,7 @@ const createDeckView = () => {
     window.location.href = '/flashcard/createDeck.php';
 };
 const logout = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield fetch('http://localhost/flashcard/api/handleLogout.php', { method: "POST" })
+    yield fetch('http://localhost:8080/flashcard/api/handleLogout.php', { method: "POST" })
         .then(res => res.json())
         .then(data => {
         if (data) {
@@ -29,7 +29,7 @@ const pickDeck = (e) => __awaiter(void 0, void 0, void 0, function* () {
         const data = new FormData();
         data.append('deck_id', el.id);
         data.append('deckName', el.innerText);
-        yield fetch('http://localhost/flashcard/api/handleChooseDeck.php', { method: 'POST', body: data })
+        yield fetch('http://localhost:8080/flashcard/api/handleChooseDeck.php', { method: 'POST', body: data })
             .then(res => res.json())
             .then(data => {
             if (data.status)
