@@ -15,7 +15,7 @@ const create = async (e: SubmitEvent): Promise<void> => {
         .then(res => res.json())
         .then(data => {
             if(data.status) {
-                window.location.href = "/flashcard/deck.php";
+                window.location.href = "/flashcard/cards.php";
             }
 
             else {

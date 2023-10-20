@@ -1,4 +1,11 @@
 const cardMainElement: HTMLElement | null = document.querySelector('main');
+const addDiv: HTMLDivElement | null = document.querySelector('#addCard');
+
+const addCard = (e: MouseEvent) => {
+    if ((e.target as HTMLElement)?.id === "addCard") {
+        window.location.href = '/flashcard/addCard.php';
+    }
+}
 
 const deleteCard = async (e: MouseEvent): Promise<void> => {
     e.preventDefault();
@@ -42,3 +49,4 @@ const editCard = async (e: MouseEvent): Promise<void> => {
 
 cardMainElement?.addEventListener('click', (e) => deleteCard(e));
 cardMainElement?.addEventListener('click', (e) => editCard(e));
+cardMainElement?.addEventListener('click', (e) => addCard(e));

@@ -20,7 +20,7 @@ const create = (e) => __awaiter(void 0, void 0, void 0, function* () {
         .then(res => res.json())
         .then(data => {
         if (data.status) {
-            window.location.href = "/flashcard/deck.php";
+            window.location.href = "/flashcard/cards.php";
         }
         else {
             alert('Error');

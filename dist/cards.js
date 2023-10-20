@@ -9,6 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const cardMainElement = document.querySelector('main');
+const addDiv = document.querySelector('#addCard');
+const addCard = (e) => {
+    var _a;
+    if (((_a = e.target) === null || _a === void 0 ? void 0 : _a.id) === "addCard") {
+        window.location.href = '/flashcard/addCard.php';
+    }
+};
 const deleteCard = (e) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c;
     e.preventDefault();
@@ -47,3 +54,4 @@ const editCard = (e) => __awaiter(void 0, void 0, void 0, function* () {
 });
 cardMainElement === null || cardMainElement === void 0 ? void 0 : cardMainElement.addEventListener('click', (e) => deleteCard(e));
 cardMainElement === null || cardMainElement === void 0 ? void 0 : cardMainElement.addEventListener('click', (e) => editCard(e));
+cardMainElement === null || cardMainElement === void 0 ? void 0 : cardMainElement.addEventListener('click', (e) => addCard(e));
