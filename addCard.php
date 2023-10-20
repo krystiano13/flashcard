@@ -14,18 +14,15 @@
 </head>
 <body>
 <main id="<?php echo $_SESSION['deck']; ?>" class="width-100 height-100 d-flex flex-col jc-center ai-center bg">
-    <form id="cardForm" method="post" class="d-flex flex-col ai-center jc-center bg-primary p-4 pt-6 pb-6 br-rad-1">
-        <input id="cardInput"
-               class="m-1 mt-3 mb-3 font-other p-1 outline-none br-none br-b-solid br-b-2 br-b-accent bg-secondary color f-s"
-               type="text" name="oneSide" placeholder="Card's first side">
-        <input id="cardInput2"
-               class="m-1 mt-3 mb-3 font-other p-1 outline-none br-none br-b-solid br-b-2 br-b-accent bg-secondary color f-s"
-               type="text" name="secondSide" placeholder="Card's second side">
-        <button class="br-none bg-accent-hover color-bg-hover mt-3 mb-3
-            m-1 font-head color f-500 f-s bg-secondary p-1 pr-5 pl-5 c-pointer" type="submit">Add
-        </button>
-        <div class="errors"></div>
-    </form>
+    <?php
+        require_once './classes/Form.php';
+        use App\Form;
+        $form = new Form();
+        $form ->setId('cardForm') -> setButton('Add')
+        ->addInput('text', 'oneSide', "Card's first side", 'cardInput')
+        ->addInput('text', 'secondSide',"Card's second side", 'cardInput2');
+        echo $form -> render();
+    ?>
 </main>
 </body>
 </html>
