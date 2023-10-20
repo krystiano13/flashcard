@@ -18,9 +18,9 @@
         require_once './classes/Form.php';
         use App\Form;
         $form = new Form();
-        $form ->setId('cardForm') -> setButton('Add')
-        ->addInput('text', 'oneSide', "Card's first side", 'cardInput')
-        ->addInput('text', 'secondSide',"Card's second side", 'cardInput2');
+        $form -> setMethod("post") ->setId('cardForm') -> setButton('Add')
+        ->addInput('text', 'oneSide', "Card's first side", 'cardInput',"")
+        ->addInput('text', 'secondSide',"Card's second side", 'cardInput2',"");
         echo $form -> render();
     ?>
 </main>

@@ -30,10 +30,12 @@ class Form
         return $this;
     }
 
-    public function addInput(string $type, string $name, string $placeholder, string $id) {
+    public function addInput(string $type, string $name, string $placeholder, string $id, string $value) {
         $this -> content = $this ->content.<<<Input
         <input class="m-1 mt-3 mb-3 font-other p-1 outline-none br-none br-b-solid br-b-2 br-b-accent bg-secondary color f-s"
-        id="{$id}" type="{$type}" name="{$name}" placeholder="{$placeholder}" />
+        id="{$id}" type="{$type}" name="{$name}" placeholder="{$placeholder}" 
+        value="{$value}"
+        />
         Input;
 
         return $this;
