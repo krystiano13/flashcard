@@ -37,6 +37,10 @@ $card = new Card();
                 echo generateCardListItem($item['one_side'], $item['id']);
             }
         ?>
+        <div id="addCard"
+             class="d-flex jc-center ai-center c-pointer cardElement f-s br-rad-2 width-50 bg-secondary color mt-2 font-other f-400 m-1 p-2">
+            <label class="max-width-50 text-center">+</label>
+        </div>
     </main>
 </body>
 </html>
