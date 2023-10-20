@@ -17,12 +17,7 @@ $card = new Card();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Flashcards</title>
-    <meta name="keywords" content="Flashcard, app, learn, study">
-    <meta name="author" content="Krystian Zieja">
-    <meta name="description" content="Simple flashcard app">
-    <link rel="stylesheet" href="./styles/micro-css-framework/index.css"/>
+    <?php include "./components/head.php"; ?>
     <link rel="stylesheet" href="./styles/cards.css?v=1" />
     <script defer src="dist/cards.js"></script>
 </head>
