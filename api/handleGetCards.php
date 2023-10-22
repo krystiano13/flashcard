@@ -1,12 +1,15 @@
 <?php
 
 session_start();
-
+if(!isset($_SESSION['deck'])) {
+    echo json_encode(['status' => false]);
+    return;
+}
 
 require_once "../classes/Card.php";
 use App\Card;
 $card = new Card();
-$card -> setDeckId(1);
+$card -> setDeckId($_SESSION['deck']);
 $results = $card -> showCards();
 
 echo json_encode(['status' => true, 'result' => $results]);
