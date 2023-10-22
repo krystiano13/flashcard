@@ -4,11 +4,28 @@ body {
     overflow: hidden;
 }
 
-.width-10 { width : 10%; }
+.width-10 {
+    width : 10%;
+
+    @media screen and (max-width : 992px) {
+        width : 50%;
+    }
+}
+
+#card {
+    @media screen and (max-width : 992px) {
+        width : 50%;
+    }
+}
 
 main {
-    animation: show 250ms;
+    animation: show 250ms ease-out;
+
+    @media screen and (max-width : 992px) {
+        flex-direction: column;
+    }
 }
+
 
 @keyframes show {
     from {
