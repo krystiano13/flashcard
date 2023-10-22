@@ -15,8 +15,8 @@ if(!isset($_SESSION['deck'])) {
     <main class="width-100 height-100 d-flex ai-center jc-center">
         <button class="br-rad-1 c-pointer width-10 color-bg bg-primary font-head br-none p-2 m-1" id="left">Previous</button>
         <div class="br-rad-2 c-pointer m-1 bg-primary color-bg width-25 height-75 d-flex flex-col jc-evenly ai-center" id="card">
-            <p class="font-head">Tekst</p>
-            <label class="font-other">click to swipe</label>
+            <p id="cardText" class="font-head">Tekst</p>
+            <label id="cardSuggestion" class="font-other">click to flip</label>
         </div>
         <button class="br-rad-1 c-pointer width-10 color-bg bg-primary font-head br-none p-2 m-1" id="right">Next</button>
     </main>
