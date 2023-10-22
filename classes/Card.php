@@ -107,10 +107,10 @@ class Card
         $query->bindValue(':id', $this->deckId);
         $query->execute();
 
-        return $query->fetchAll();
+        return $query->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function addCard()
+public function addCard()
     {
         $database = new Database();
         $database->connect();

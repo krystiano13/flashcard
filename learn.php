@@ -9,6 +9,7 @@ if(!isset($_SESSION['deck'])) {
 <head>
     <?php include "./components/head.php"; ?>
     <link rel="stylesheet" href="./styles/learn.css" />
+    <script defer src="dist/learn.js"></script>
 </head>
 <body>
     <main class="width-100 height-100 d-flex ai-center jc-center">
