@@ -12,12 +12,12 @@ if(!isset($_SESSION['deck'])) {
 </head>
 <body>
     <main class="width-100 height-100 d-flex ai-center jc-center">
-        <button class="c-pointer width-10 color-bg bg-primary font-head br-none p-2 m-1" id="left">Previous</button>
-        <div class="c-pointer m-1 bg-primary color-bg width-25 height-75 d-flex flex-col jc-evenly ai-center" id="card">
+        <button class="br-rad-1 c-pointer width-10 color-bg bg-primary font-head br-none p-2 m-1" id="left">Previous</button>
+        <div class="br-rad-2 c-pointer m-1 bg-primary color-bg width-25 height-75 d-flex flex-col jc-evenly ai-center" id="card">
             <p class="font-head">Tekst</p>
             <label class="font-other">click to swipe</label>
         </div>
-        <button class="c-pointer width-10 color-bg bg-primary font-head br-none p-2 m-1" id="right">Next</button>
+        <button class="br-rad-1 c-pointer width-10 color-bg bg-primary font-head br-none p-2 m-1" id="right">Next</button>
     </main>
 </body>
 </html>
