@@ -148,6 +148,16 @@ public function addCard():Card
         $query3 -> execute();
     }
 
+    public function swipeCards(string $username) {
+        $database = new Database();
+        $database->connect();
+        $con = $database->connection;
+
+        $query3 = $con -> prepare("UPDATE userdata SET cards_solved=cards_solved+1 WHERE username=:username");
+        $query3 -> bindValue(':username', $username);
+        $query3 -> execute();
+    }
+
     public function setDeckId(int $id): Card
     {
         $this->deckId = $id;
