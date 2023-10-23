@@ -85,6 +85,9 @@ class Deck
         $query -> bindValue(':name', $this -> deckName);
 
         if($query -> execute()) {
+            $query2 = $con -> prepare("UPDATE userdata SET decks=decks+1 WHERE username=:username");
+            $query2 -> bindValue(':username', $this -> username);
+            $query2 -> execute();
             echo json_encode(['status' => true]);
         }
         else {
