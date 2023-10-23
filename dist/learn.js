@@ -18,6 +18,7 @@ const card = document.querySelector('#card');
 const flip = () => {
     isFlipped = !isFlipped;
     handleChangeId();
+    card === null || card === void 0 ? void 0 : card.classList.toggle('flipped');
     if (isFlipped) {
         fetch('http://localhost:8080/flashcard/api/handleSwipeCard.php');
     }

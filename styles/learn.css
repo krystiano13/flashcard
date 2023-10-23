@@ -13,9 +13,15 @@ body {
 }
 
 #card {
+    transition: transform 350ms;
+    will-change: transform;
     @media screen and (max-width : 992px) {
         width : 50%;
     }
+}
+
+.flipped {
+    transform : perspective(900px) rotateY(180deg) scaleX(-1);
 }
 
 main {
