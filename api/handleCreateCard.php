@@ -5,7 +5,8 @@ session_start();
 if(
     !isset($_SESSION['deck']) ||
     !isset($_POST['oneSide']) ||
-    !isset($_POST['secondSide'])
+    !isset($_POST['secondSide']) ||
+    !isset($_SESSION['username'])
 ) {
     echo json_encode(['status' => false]);
 }
@@ -22,4 +23,5 @@ $card
     ->setDeckId((int)$deckId)
     ->setCardFirstSide($cardOneSide)
     ->setCardSecondSide($cardSecondSide)
-    ->addCard();
+    ->addCard()
+    ->countCards($_SESSION['username']);

@@ -39,7 +39,6 @@ $info($user);
                 <li class="color-bg font-other f-l m-1 ml-6">Decks created : <?php echo $info->decks; ?></li>
                 <li class="color-bg font-other f-l m-1 ml-6">Cards created : <?php echo $info->cards; ?></li>
                 <li class="color-bg font-other f-l m-1 ml-6">Cards swiped : <?php echo $info->cardsSolved; ?></li>
-                <li class="color-bg font-other f-l m-1 ml-6">Finished decks : <?php echo $info->decksSolved; ?></li>
             </ul>
         </div>
         <div id="decks" class="col-8 col-xxl-12 height-100 d-flex jc-center ai-center">

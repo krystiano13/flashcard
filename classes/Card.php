@@ -110,7 +110,7 @@ class Card
         return $query->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-public function addCard()
+public function addCard():Card
     {
         $database = new Database();
         $database->connect();
@@ -125,13 +125,27 @@ public function addCard()
         $query->bindValue(":two", $this->cardSecondSide);
 
         if ($query->execute()) {
+
             $query2 = $con -> prepare("UPDATE decks SET cards=cards+1 WHERE id=:id");
             $query2 -> bindValue(':id', $this -> deckId);
             $query2 -> execute();
+
             echo json_encode(['status' => true]);
         } else {
             echo json_encode(['status' => false]);
         }
+
+        return $this;
+    }
+
+    public function countCards(string $username) {
+        $database = new Database();
+        $database->connect();
+        $con = $database->connection;
+
+        $query3 = $con -> prepare("UPDATE userdata SET cards=cards+1 WHERE username=:username");
+        $query3 -> bindValue(':username', $username);
+        $query3 -> execute();
     }
 
     public function setDeckId(int $id): Card
