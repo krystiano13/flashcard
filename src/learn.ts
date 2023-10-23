@@ -16,6 +16,10 @@ const card: HTMLDivElement | null = document.querySelector('#card');
 const flip = () => {
     isFlipped = !isFlipped;
     handleChangeId();
+
+    if(isFlipped) {
+        fetch('http://localhost:8080/flashcard/api/handleSwipeCard.php');
+    }
 }
 
 const handleChangeId = () => {
