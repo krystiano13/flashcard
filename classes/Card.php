@@ -125,6 +125,9 @@ public function addCard()
         $query->bindValue(":two", $this->cardSecondSide);
 
         if ($query->execute()) {
+            $query2 = $con -> prepare("UPDATE decks SET cards=cards+1 WHERE id=:id");
+            $query2 -> bindValue(':id', $this -> deckId);
+            $query2 -> execute();
             echo json_encode(['status' => true]);
         } else {
             echo json_encode(['status' => false]);
